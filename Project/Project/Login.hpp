@@ -12,9 +12,8 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
-//#include <unistd.h>
-//#include <io.h>
-#include <windows.h>
+#include <unistd.h>     //for mac
+//#include <windows.h>  for windows
 #include "Manager.hpp"
 #include "Waitstaff.hpp"
 

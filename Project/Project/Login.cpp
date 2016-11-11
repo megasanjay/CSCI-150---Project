@@ -36,7 +36,8 @@ void login()
             system("CLS");
             cout << "3 attempts used. Please wait 5 seconds." << endl << endl;
             count = 1;
-			Sleep(5000);
+			//Sleep(5000); for windows
+            sleep(5); // for mac
         }
         system("CLS");
         cout << "Enter 'quit' int the 'Username' field to exit the program" << endl;
