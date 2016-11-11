@@ -13,7 +13,7 @@
 
 string manager [2][3] =
     {
-        {"admm","casey","john"},
+        {"adam","casey","john"},
         {"1234" , "5678","3434"}
     };
 
@@ -36,7 +36,7 @@ void login()
             system("CLS");
             cout << "3 attempts used. Please wait 5 seconds." << endl << endl;
             count = 1;
-            sleep(5);
+			Sleep(5000);
         }
         system("CLS");
         cout << "Enter 'quit' int the 'Username' field to exit the program" << endl;

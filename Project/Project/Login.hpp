@@ -12,7 +12,9 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
-#include <unistd.h>
+//#include <unistd.h>
+//#include <io.h>
+#include <windows.h>
 #include "Manager.hpp"
 #include "Waitstaff.hpp"
 
