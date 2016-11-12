@@ -10,5 +10,5 @@
 
 void waitermodule()
 {
-    
+    Orders();
 }

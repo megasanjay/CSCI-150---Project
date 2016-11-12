@@ -10,6 +10,7 @@
 #define WaitStaff_hpp
 
 #include <stdio.h>
+#include "CreateOrders.hpp"
 
 void waitermodule();
 

@@ -11,6 +11,8 @@
 
 int TableNum = 1;
 
+Table* head;
+
 SLL::SLL()
 {
     head = NULL;

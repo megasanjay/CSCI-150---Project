@@ -12,18 +12,21 @@
 #include "Table.hpp"
 #include "Login.hpp"
 #include "Menu.hpp"
+#include <unistd.h>
 #include <stdlib.h>
 //#include <curses.h>
 
 using namespace std;
 
+SLL RestTables;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     string loginusername;
     string loginpassword;
+    string quitstate = "";
     //Declare object for restaurant tables
-    SLL RestTables;
+    
     //How many tables are going to be created?
     int N;
     int i = 0;
@@ -45,7 +48,15 @@ int main(int argc, const char * argv[]) {
     //refresh();
     //cout << "\033[2J\033[1;1H";
     //system("clear");
-    login();
+    cout << "Logging in....." << endl;
+    sleep(2);
+    system("CLS");
+    while (quitstate != "exit")
+    {
+        login();
+        cout << "Type 'exit' to exit the program or enter any character to continue: " << endl;
+        cin >> quitstate;
+    }
     
     return 0;
 }

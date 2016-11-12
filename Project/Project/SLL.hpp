@@ -43,11 +43,13 @@ using namespace std;
  ************************************************************************
  */
 
+extern Table* head;
+
 class SLL
 {
 private:
     
-    Table *head,*tail;       //Node pointers to head and tail
+    Table *tail;       //Node pointers to head and tail
     
     
 public:

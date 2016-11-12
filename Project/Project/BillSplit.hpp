@@ -11,7 +11,15 @@
 
 #include <stdio.h>
 #include "CreateOrders.hpp"
+#include "Menu.hpp"
+#include "SLL.hpp"
+//#include "Table.hpp"
+#include <iostream>
+#include <vector>
 
-void splitBills();
+using namespace std;
+
+void splitBills(int tablenum);
+
 
 #endif /* BillSplit_hpp */

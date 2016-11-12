@@ -10,12 +10,12 @@
 
 void Orders()
 {
-    
+    int tablenum = 6;
     
     
     // After ordering and dining
     updateStats();
-    splitBills();
+    splitBills(tablenum);
 }
 
 
