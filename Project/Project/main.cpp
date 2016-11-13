@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
     
     RestTables.printAll();
     
-    menuPopulate();     // Create the menu data structure
+    //menuPopulate();     // Create the menu data structure
     
     //system("CLS");      // Clear screen in windows. Dooesn't work on macs
     //clear();
