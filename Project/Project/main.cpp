@@ -6,7 +6,7 @@
 //  Copyright © 2016 //INSERT TEAM NAME HERE. All rights reserved.
 //
 
-#include <iostream>
+//#include <iostream>
 //#include "Customer.hpp"
 #include "SLL.hpp"
 #include "Table.hpp"
@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
     
     RestTables.printAll();
     
-    //menuPopulate();     // Create the menu data structure
+    menuPopulate();     // Create the menu data structure
     
     //system("CLS");      // Clear screen in windows. Dooesn't work on macs
     //clear();
@@ -51,6 +51,7 @@ int main(int argc, const char * argv[]) {
     cout << "Logging in....." << endl;
     sleep(2);
     system("CLS");
+    PrintMenu();
     while (quitstate != "exit")
     {
         login();

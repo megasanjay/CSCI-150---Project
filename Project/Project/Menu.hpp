@@ -11,19 +11,27 @@
 
 #include <stdio.h>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
-void menuEdit();
-void menuPopulate();
-void printMenu();
+//void menuEdit();
 
 struct Menu{
     string Name;
     string Item[100];
     string Price[100];
     string Option[100];
-    Menu *next;
+    Menu* next;
 };
+
+void menuPopulate();
+void PrintMenu();
+
+extern Menu* menu;
+extern Menu* menuhead;
+
 
 #endif /* Menu_hpp */
