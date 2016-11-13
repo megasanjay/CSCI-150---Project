@@ -78,7 +78,7 @@ void menuPopulate()
             p = 0;
         }
     }
-    infile.close(); // closes the stream
+    infile.close(); // closes the input stream
     
     //PrintMenu(); // prints the menu items
     
@@ -94,7 +94,7 @@ void PrintMenu()
         for (int i, j= 0; i < 100; i++,j++)
         { // for loop to go through the arrays
             if (front->Item[i] == "")
-            { // if there is a new item in the array sinc the array contains 100 cells, i dont want to keep printing the "" cells
+            { // if there is a new item in the array sine the array contains 100 cells, i dont want to keep printing the "" cells
                 // once the Items and prices are done printing resets the arrays to 0 for both arrays
                 i = 0;
                 j=0;
