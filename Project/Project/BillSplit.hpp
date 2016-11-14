@@ -21,6 +21,6 @@
 using namespace std;
 
 void splitBills(int tablenum);
-void nosplitTotal(int tablenumber);
-
+void nosplitTotal(int tablenumber, int fulltotal);
+void splitTotal(int tablenum, vector<int> &inputvector);
 #endif /* BillSplit_hpp */
