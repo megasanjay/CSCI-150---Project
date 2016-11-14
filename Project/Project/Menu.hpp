@@ -22,7 +22,7 @@ using namespace std;
 struct Menu{
     string Name;
     string Item[100];
-    string Price[100];
+    int Price[100];
     string Option[100];
     Menu* next;
 };

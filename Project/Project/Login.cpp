@@ -40,7 +40,7 @@ void login()
             sleep(5); // for mac
         }
         system("CLS");
-        cout << "Enter 'quit' int the 'Username' field to exit the login process" << endl;
+        cout << "Enter 'quit' in the 'Username' field to exit the login process or type in your username:" << endl;
         cout << "Enter Username: ";
         cin >> username;
         if (username == "quit")

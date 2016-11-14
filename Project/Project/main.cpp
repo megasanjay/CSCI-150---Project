@@ -29,10 +29,10 @@ int main(int argc, const char * argv[]) {
     
     //How many tables are going to be created?
     int N;
-    int i = 0;
+    int i = 1;
     cout << "Please enter how many tables will be created: " << endl;
     cin >> N;
-    while(i < N){
+    while(i <= N){
         
         RestTables.insertToBack(i);
         i++;

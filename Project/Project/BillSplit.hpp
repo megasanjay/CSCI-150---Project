@@ -16,10 +16,11 @@
 //#include "Table.hpp"
 #include <iostream>
 #include <vector>
+#include <cctype>
 
 using namespace std;
 
 void splitBills(int tablenum);
-
+void nosplitTotal(int tablenumber);
 
 #endif /* BillSplit_hpp */

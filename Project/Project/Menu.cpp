@@ -21,7 +21,7 @@
 
 #include "Menu.hpp"
 
-Menu* menu = new Menu();
+Menu* menu; //= new Menu();
 Menu* menuhead;
 
 void menuPopulate()
@@ -33,9 +33,11 @@ void menuPopulate()
     //menuhead; // pointer head to be used to point to the first menu
     int f = 0;
     int p = 0;
+    string price;
     infile.open("/Users/Sanjay/Downloads/Menu 2/Menu.txt");
     outfile.open("/Users/Sanjay/Downloads/Menu 2/Menu_output.txt");
     infile >> Word;
+    menu = new Menu();
     menuhead = menu;
     while(!infile.eof())
     {
@@ -63,7 +65,8 @@ void menuPopulate()
         }
         if (Word == "Price:")
         { // when the word is price it add the price to the [p element of the array]
-            infile >> menu->Price[p]; //
+            infile >> price;
+            menu->Price[p] = stoi(price);
             p++;// moves to the next cell of the price array
             infile >> Word; // reads in another string
         }
@@ -79,7 +82,7 @@ void menuPopulate()
         }
     }
     infile.close(); // closes the input stream
-    
+    outfile.close();
     //PrintMenu(); // prints the menu items
     
     //return;
