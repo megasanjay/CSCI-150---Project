@@ -51,7 +51,7 @@ int main(int argc, const char * argv[]) {
     cout << "Logging in....." << endl;
     sleep(2);
     system("CLS");
-    PrintMenu();
+    //PrintMenu();
     while (quitstate != "exit")
     {
         login();
