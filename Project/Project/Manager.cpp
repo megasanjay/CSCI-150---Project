@@ -12,4 +12,6 @@ void managermodule()
 {
     //menuEdit();
     statsCheck();
+    addlogin();
 }
+

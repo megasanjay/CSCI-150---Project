@@ -14,34 +14,37 @@ void Orders()
 {
     char m;
     char a;
-    int i = 1;
+    //int i = 1;
     int o, time, custom, customer;
     int choice, choicea;
-    int tablenum = 0;
+    int tablenum = 0, temp = 1;
     Table* p = head;
     string input = "";
     vector<int> inputvector;
     
-    while (input!= "exit")
+    while (temp != 0)
     {
-        cout << "Type 'exit' to return to main menu" << endl;
-        ///Select Table
-        cout << "Input table number for current order" << endl;
-        cin >> tablenum;
+        cout << "Type '0' to return to main menu or Input table number for current order: " << endl;
+        cin >> temp;
+        
+
+        
+        tablenum = temp;
         
         while ((p->classTableNum) != tablenum)
         {
             p = p->next;
         }
         
-        while (i == 1)
+        while (temp != 0)
         {
             ///Select Customer
-            cout << "Please input customer number" << endl;
+            cout << "Please input customer number: " << endl;
             cin >> customer; //Varies depending on how customers are stored
-            while ((p->Customer[0][customer]).empty()){
-                cout << "Incorrect input. Please choose a different number." << endl ;
-                cin >> customer;
+            if ((customer > 5) || (customer < 0))//((p->Customer[0][customer]).empty())
+            {
+                cout << "Incorrect input" << endl ;
+                continue;
             }
             ///Select food or drink
             PrintMenu();
@@ -154,6 +157,7 @@ void Orders()
                                     o = 1150;
                                     break;
                             }
+                            break;
                         case 2 : //Dinner
                             cout << "What food? (1) Turkey (2) Chicken (3) Tri-Tip"<< endl;
                             cin >> choicea;
@@ -262,22 +266,24 @@ void Orders()
             }
             cout << "Are there more customer orders for current table? (Y/N)" << endl;
             cin >> m;
+            //inputvector.push_back(o);
+            updateStats();
             if (m == 'N'){
-                i = 0;
-                while(customer!= 0)
-                {
+                //i = 0;
+                //while(customer!= 0)
+                //{
                     inputvector.push_back(o);
-                    cout << "Press 0 to exit current customer" << endl;
-                    cin >> customer;
-                }
-                updateStats();
-                return;
+                    //cout << "Press 0 to exit current customer" << endl;
+                    //cin >> customer;
+                //}
+                //updateStats();
+                temp = 0;
             }
-            while(customer!= 0)
+            else //while(customer!= 0)
             {
                 inputvector.push_back(o);
-                cout << "Press 0 to exit current customer" << endl;
-                cin >> customer;
+                //cout << "Press 0 to exit current customer" << endl;
+                //cin >> customer;
             }
         }
     }

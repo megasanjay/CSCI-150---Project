@@ -49,7 +49,7 @@ int main(int argc, const char * argv[]) {
     //cout << "\033[2J\033[1;1H";
     //system("clear");
     cout << "Logging in....." << endl;
-    sleep(2);
+    //sleep(2);
     system("CLS");
     //PrintMenu();
     while (quitstate != "exit")
