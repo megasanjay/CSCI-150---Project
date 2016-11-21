@@ -34,7 +34,7 @@ void splitBills(int tablenum)
     cin >> input;
     while(input!= 0)
     {
-        if (((p->Customer[0][input - 1]).empty()) && (isdigit(input)))
+        if (((p->Customer[0][input - 1]).empty()) || (!isdigit(input)))
         {
             cout << "Incorrect input. Please choose one of the following customers in order. Enter '0' when done " << endl ;
             for (int i = 0; (i < 4) && !((p->Customer[0][i]).empty()); i++)
@@ -59,14 +59,14 @@ void splitBills(int tablenum)
     }
 }
 
-void nosplitTotal(int tablenum, int fulltotal)
+void nosplitTotal(int tablenum, float fulltotal)
 {
     Table* p = head;
     Menu* q;
     string customchoice;
     int fooditem = 0;
     int foodtype, foodnum, foodcustom;
-    int total = fulltotal;
+    float total = fulltotal;
     vector<string> outputvector;
     //int i = 0;
     
@@ -117,38 +117,35 @@ void nosplitTotal(int tablenum, int fulltotal)
                 {
                     customchoice = " - With Lemons";
                 }
+                if (foodcustom == 2)
+                {
+                    customchoice = " - No Ice";
+                }
             }
             
             if (fooditem == 1)
             {
-                if (foodtype == 1)
-                {
-                    while ((q->Name) != "Lunch")
-                    {
-                        q = q->next;
-                    }
-                    outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(q->Price[foodnum - 1]));
-                    total = total + q->Price[foodnum - 1];
-                    continue;
-                }
-                if (foodtype == 2)
-                {
-                    while ((q->Name) != "Dinner")
-                    {
-                        q = q->next;
-                    }
-                    outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(q->Price[foodnum - 1]));
-                    total = total + q->Price[foodnum - 1];
-                    continue;
-                }
-            }
-            if (fooditem == 2)
-            {
-                while ((q->Name) != "Drinks")
+                for(int j = 0; j < foodtype; j++)
                 {
                     q = q->next;
                 }
-                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(q->Price[foodnum - 1]));
+
+                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(ROUNDF(q->Price[foodnum - 1], 100)));
+                
+                total = total + q->Price[foodnum - 1];
+                continue;
+            }
+            if (fooditem == 2)
+            {
+                while ((q->foodtype) != 'd')
+                {
+                    q = q->next;
+                }
+                for(int j = 0; j < foodtype; j++)
+                {
+                    q = q->next;
+                }
+                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(ROUNDF(q->Price[foodnum - 1], 100)));
                 total = total + q->Price[foodnum - 1];
                 continue;
             }
@@ -160,7 +157,7 @@ void nosplitTotal(int tablenum, int fulltotal)
         cout << outputvector.back() << endl;
         outputvector.pop_back();
     }
-    cout << "\n\n" << "Total to be paid: " << total << endl;
+    cout << "\n\n" << "Total to be paid: " << ROUNDF(total, 100) << endl;
 }
 
 void splitTotal(int tablenum, vector<int> &inputvector)
@@ -172,7 +169,7 @@ void splitTotal(int tablenum, vector<int> &inputvector)
     int fooditem = 0;
     int foodtype, foodnum, foodcustom;
     int total = 0;
-    int fulltotal = 0;
+    float fulltotal = 0;
     vector<string> outputvector;
     
     outputvector.clear();
@@ -222,42 +219,39 @@ void splitTotal(int tablenum, vector<int> &inputvector)
             {
                 if (foodcustom == 1)
                 {
-                    customchoice = " - With Lemons";
+                    customchoice = " - With Lemons ";
+                }
+                
+                if (foodcustom == 2)
+                {
+                    customchoice = " - No Ice ";
                 }
             }
             
             if (fooditem == 1)
             {
-                if (foodtype == 1)
-                {
-                    while ((q->Name) != "Lunch")
-                    {
-                        q = q->next;
-                    }
-                    outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(q->Price[foodnum - 1]));
-                    total = total + q->Price[foodnum - 1];
-                    fulltotal = fulltotal + q->Price[foodnum - 1];
-                    continue;
-                }
-                if (foodtype == 2)
-                {
-                    while ((q->Name) != "Dinner")
-                    {
-                        q = q->next;
-                    }
-                    outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(q->Price[foodnum - 1]));
-                    total = total + q->Price[foodnum - 1];
-                    fulltotal = fulltotal + q->Price[foodnum - 1];
-                    continue;
-                }
-            }
-            if (fooditem == 2)
-            {
-                while ((q->Name) != "Drinks")
+                for(int j = 0; j < foodtype; j++)
                 {
                     q = q->next;
                 }
-                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(q->Price[foodnum - 1]));
+                
+                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(ROUNDF(q->Price[foodnum - 1], 100)));
+                
+                total = total + q->Price[foodnum - 1];
+                fulltotal = fulltotal + q->Price[foodnum - 1];
+                continue;
+            }
+            if (fooditem == 2)
+            {
+                while ((q->foodtype) != 'd')
+                {
+                    q = q->next;
+                }
+                for(int j = 0; j < foodtype; j++)
+                {
+                    q = q->next;
+                }
+                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(ROUNDF(q->Price[foodnum - 1], 100)));
                 total = total + q->Price[foodnum - 1];
                 fulltotal = fulltotal + q->Price[foodnum - 1];
                 continue;
@@ -269,7 +263,7 @@ void splitTotal(int tablenum, vector<int> &inputvector)
             cout << outputvector.back() << endl;
             outputvector.pop_back();
         }
-        cout << endl <<"Total to be paid" << total << endl;
+        cout << endl <<"Total: " << ROUNDF(total, 100) << endl;
         cout << "-----------------------" << endl;
     }
     nosplitTotal(tablenum, fulltotal);

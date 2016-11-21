@@ -9,6 +9,8 @@
 #ifndef BillSplit_hpp
 #define BillSplit_hpp
 
+#define ROUNDF(f, c) (((float)((int)((f) * (c))) / (c)))
+
 #include <stdio.h>
 #include "CreateOrders.hpp"
 #include "Menu.hpp"
@@ -21,6 +23,6 @@
 using namespace std;
 
 void splitBills(int tablenum);
-void nosplitTotal(int tablenumber, int fulltotal);
+void nosplitTotal(int tablenumber, float fulltotal);
 void splitTotal(int tablenum, vector<int> &inputvector);
 #endif /* BillSplit_hpp */
