@@ -22,13 +22,15 @@ using namespace std;
 struct Menu{
     string Name;
     string Item[100];
-    int Price[100];
+    float Price[100];
     string Option[100];
+    char foodtype;
     Menu* next;
 };
 
 void menuPopulate();
 void PrintMenu();
+//void printFoodMenu(Menu* q);
 
 extern Menu* menu;
 extern Menu* menuhead;

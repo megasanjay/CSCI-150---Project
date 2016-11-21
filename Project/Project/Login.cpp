@@ -18,7 +18,7 @@ void login()
 {
     string username;
     string password;
-    int count = 0;
+    int count = 1;
     ifstream infile;
     string word;
     int stafftype = 0;
@@ -27,37 +27,34 @@ void login()
 
     // Create local password storage;
     
-    while (!infile.eof())
+    manager.clear();
+    waiter.clear();
+    
+    infile >> word;
+    if (encryptDecrypt(word) == "manager")
     {
-        infile >> word;
-        if (encryptDecrypt(word) == "manager")
+        infile >> username;
+        infile >> password;
+        while (encryptDecrypt(username) != "waiting")
         {
-            infile >> username;
-            infile >> password;
-            while (encryptDecrypt(username) != "waiting")
-            {
-                manager.push_back(make_pair(encryptDecrypt(username),encryptDecrypt(password)));
-                count++;
-                infile >> username;
-                infile >> password;
-            }
-        }
-        if (encryptDecrypt(username) == "waiting")
-        {
-            username = password;
-            infile >> password;
-            count = 0;
-        }
-        while (!infile.eof())
-        {
-            waiter.push_back(make_pair(encryptDecrypt(username),encryptDecrypt(password)));
-            count++;
+            manager.push_back(make_pair(encryptDecrypt(username),encryptDecrypt(password)));
             infile >> username;
             infile >> password;
         }
     }
+    if (encryptDecrypt(username) == "waiting")
+    {
+        username = password;
+        infile >> password;
+    }
+    while (!infile.eof())
+    {
+        waiter.push_back(make_pair(encryptDecrypt(username),encryptDecrypt(password)));
+        infile >> username;
+        infile >> password;
+    }
     
-    count = 1;
+    infile.close();
     
     while (stafftype == 0)
     {
@@ -149,7 +146,6 @@ void addlogin()
     string username;
     string password;
     string output = "";
-    int count = 0;
     
     outfile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/login.txt");
 
@@ -171,11 +167,6 @@ void addlogin()
             cout << "Input Manager password:" << endl;
             cin >> password;
             
-            while (manager[count].first != "")
-            {
-                count++;
-            }
-            
             manager.push_back(make_pair(username,password));
             
             exit = true;
@@ -186,11 +177,6 @@ void addlogin()
             cin >> username;
             cout << "Input Wait-Staff password:" << endl;
             cin >> password;
-            
-            while (waiter[count].first != "")
-            {
-                count++;
-            }
             
             waiter.push_back(make_pair(username,password));
             
@@ -207,7 +193,7 @@ void addlogin()
         }
     }
     
-    output = encryptDecrypt("Manager") + "\n" ;
+    output = encryptDecrypt("manager") + "\n" ;
     
     outfile << output;
     for(int i = 0; i < manager.size(); i++)

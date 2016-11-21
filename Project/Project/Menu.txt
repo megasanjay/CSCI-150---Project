@@ -1,24 +1,31 @@
 Title: Lunch
 
-Item: Burger		Price: $4.99
-Item: Cheeseburger 	Price: $5.99
-Item: Fries 		Price: $1.99
-Item: Hot Dog		Price: $0.99
-Item: Bacon Cheese Burger Price: $6.99
+Item: Burger		Price: 4.99
+Item: Cheeseburger 	Price: 5.99
+Item: Fries 		Price: 1.99
+Item: Hot Dog		Price: 0.99
+Item: Bacon Cheese Burger Price: 6.99
 
 Done 
 
 Title: Dinner
 
-Item: Turkey 		Price: $11.99
-Item: Chicken 		Price: $10.00
-Item: Tri-Tip 		Price: $9.99
+Item: Turkey 		Price: 11.99
+Item: Chicken 		Price: 10.00
+Item: Tri-Tip 		Price: 9.99
 
 Done
 
 Title: Drinks
 
-Item: Dr. Pepper Price: $1.99
-Item: Pepsi	 Price: $1.99
+Item: Dr. Pepper 	Price: 1.99
+Item: Pepsi	 	Price: 1.99
+Item: Bottled Water 	Price: 1.00
 
 Done
+
+Title: Alcohol
+
+Item: Heineken 		Price: 1.99
+Item: Corona		Price: 1.99
+Item: Blue Moon		Price: 1.99

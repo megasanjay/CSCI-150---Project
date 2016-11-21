@@ -100,22 +100,27 @@ void SLL::deleteKthNodeFromBack(int k){
  ***********************************************
  */
 
-void SLL::insertToBack(int TableNumber){
+void SLL::insertToBack(int TableNumber)
+{
+    Table* temp; //Create temporary Table node
+    Table* p = head;
+    temp = new Table;   // Create new table
+    temp->classTableNum = TableNumber;  //assign table number
     
-    Table *temp; //create temporary Table node
-    temp = new Table; //Create new table
-    temp->classTableNum = TableNumber; //assign table number
-    TableNum++;  //increment global variable by one
-    temp->next = NULL;
-    
-    if(head != NULL){
-        tail->next = temp;
-        tail = temp;
-    }
-    else{
+    if (head == NULL)
+    {
         head = temp;
-        tail = temp;
+        temp->next = NULL;
+        return;
     }
+    
+    while (p->next != NULL)
+    {
+        p = p->next;
+    }
+    
+    p->next = temp;
+    temp->next = NULL;
     
 }
 

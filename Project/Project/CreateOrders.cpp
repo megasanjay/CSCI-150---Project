@@ -13,282 +13,206 @@
 void Orders()
 {
     char m;
-    char a;
+    char a = 'c';
+    Menu* q = menuhead;
+    Menu* r = menuhead;
     //int i = 1;
-    int o, time, custom, customer;
+    int o, time, custom, customernumber = 0;
     int choice, choicea;
     int tablenum = 0, temp = 1;
+    int count =0;
+    int item = 0;
     Table* p = head;
-    string input = "";
+    int input = 0;
     vector<int> inputvector;
     
     while (temp != 0)
     {
         cout << "Type '0' to return to main menu or Input table number for current order: " << endl;
+        cin.clear();
         cin >> temp;
         
-
+        if (temp == 0)
+        {
+            continue;
+        }
         
         tablenum = temp;
         
-        while ((p->classTableNum) != tablenum)
+        if (tablenum != 0)
         {
-            p = p->next;
+            while ((p->classTableNum) != tablenum)
+            {
+                p = p->next;
+            }
         }
         
         while (temp != 0)
         {
             ///Select Customer
-            cout << "Please input customer number: " << endl;
-            cin >> customer; //Varies depending on how customers are stored
-            if ((customer > 5) || (customer < 0))//((p->Customer[0][customer]).empty())
+            if (a == 'c')
             {
-                cout << "Incorrect input" << endl ;
-                continue;
+                cout << "Please input customer number: " << endl;
+                cin.clear();
+                cin >> customernumber; //Varies depending on how customers are stored
+                if ((customernumber > 5) || (customernumber < 0))//((p->Customer[0][customer]).empty())
+                {
+                    cout << "Incorrect input." << endl ;
+                    continue;
+                }
             }
             ///Select food or drink
-            PrintMenu();
+            //--------------------------PrintMenu();
             cout << "Press 1 for Food, 2 for Drink" << endl;
+            cin.clear();
             cin >> choice;
-            switch (choice)
+            q  = menuhead;
+            if (choice == 1)
             {
-                case 1 : //Food
-                    cout << "(1) Lunch (2) Dinner" << endl;
-                    cin >> time;
-                    switch (time)
+                cout << "Please select one of the below options:" << endl;
+                count = 0;
+                r = q;
+                while(q->foodtype == 'f')
+                {
+                    cout << (count+1) << " - " << q->Name << endl;
+                    q = q->next;
+                    count++;
+                }
+                
+                cout << "Your choice: " ;
+                cin.clear();
+                cin >> time;
+                //r = menuhead;
+                
+                for (int i = 1; i < time;i++)
+                {
+                    r = r->next;
+                }
+                
+                count = 0;
+                cout << "Please select the number of the item the customer wants to order: " << endl;
+                
+                while (r->Item[count] != "")
+                {
+                    cout << count+1 << " - " << r->Item[count] << endl;
+                    count++;
+                }
+                
+                cout << "Your choice: ";
+                cin.clear();
+                cin >> choicea;
+                
+                cout << "Do you want to customize the order? Please '8' if you do, or type '0' to confirm order: ";
+                cin.clear();
+                cin >> custom;
+                
+                if (custom == 8)
+                {
+                    cout << "Do you want (1) - Ketchup or (2) - Mustard. Please select the item you want to add to the order: ";
+                    cin.clear();
+                    cin >> custom;
+                    item = (choice * 1000) + (time * 100) + (choicea * 10) + custom;
+                }
+                if (custom == 0)
+                {
+                    item = (choice * 1000) + (time * 100) + (choicea * 10) + custom;
+                }
+                
+            }
+            if (choice == 2)
+            {
+                while(q->foodtype != 'd')
+                {
+                    q = q->next;
+                }
+                cout << "Please select one of the below options:" << endl;
+                count = 0;
+                r = q;
+                while(q->foodtype == 'd')
+                {
+                    cout << (count+1) << " - " << q->Name << endl;
+                    if (q->next == NULL)
                     {
-                        case 1 : //Lunch
-                            cout << "What food? (1) Burger (2) Cheese burger (3) fries (4) hotdog (5) bacon cheeseburger" << endl;
-                            cin >> choicea;
-                            switch (choicea) {
-                                case 1 : //Burger
-                                    cout << "Customize order? (Y/N)" << endl;
-                                    cin >> a;
-                                    if (a == 'Y') {
-                                        cout << "Choose a customization for customer: (1) Ketchup (2) Mustard";
-                                        cin >> custom;
-                                        switch (custom) {
-                                            case 1 :
-                                                //add Ketchup
-                                                o = 1111;
-                                                break;
-                                            case 2 :
-                                                //add mustard
-                                                o = 1112;
-                                                break;
-                                        }
-                                    }
-                                    o = 1110;
-                                    break;
-                                case 2 : //Cheese Burger
-                                    cout << "Customize order? (Y/N)" << endl;
-                                    cin >> a;
-                                    if (a == 'Y') {
-                                        cout << "Choose a customization for customer: (1) Ketchup (2) Mustard"<< endl;
-                                        cin >> custom;
-                                        switch (custom) {
-                                            case 1 :
-                                                //add Ketchup
-                                                o = 1121;
-                                                break;
-                                            case 2 :
-                                                //add mustard
-                                                o = 1122;
-                                                break;
-                                        }
-                                    }
-                                    o = 1120;
-                                    break;
-                                case 3 : //Fries
-                                    cout << "Customize order? (Y/N)" << endl;
-                                    cin >> a;
-                                    if (a == 'Y') {
-                                        cout << "Choose a customization for customer: (1) Ketchup (2) Mustard"<< endl;
-                                        cin >> custom;
-                                        switch (custom) {
-                                            case 1 :
-                                                //add Ketchup
-                                                o = 1131;
-                                                break;
-                                            case 2 :
-                                                //add mustard
-                                                o = 1132;
-                                                break;
-                                        }
-                                    }
-                                    o = 1130;
-                                    break;
-                                case 4 : //Hotdog
-                                    cout << "Customize order? (Y/N)" << endl;
-                                    cin >> a;
-                                    if (a == 'Y') {
-                                        cout << "Choose a customization for customer: (1) Ketchup (2) Mustard"<< endl;
-                                        cin >> custom;
-                                        switch (custom) {
-                                            case 1 :
-                                                //add Ketchup
-                                                o = 1141;
-                                                break;
-                                            case 2 :
-                                                //add mustard
-                                                o = 1142;
-                                                break;
-                                        }
-                                    }
-                                    o = 1140;
-                                    break;
-                                case 5 : //Bacon CheeseBurger
-                                    cout << "Customize order? (Y/N)" << endl;
-                                    cin >> a;
-                                    if (a == 'Y') {
-                                        cout << "Choose a customization for customer: (1) Ketchup (2) Mustard"<< endl;
-                                        cin >> custom;
-                                        switch (custom) {
-                                            case 1 :
-                                                //add Ketchup
-                                                o = 1151;
-                                                break;
-                                            case 2 :
-                                                //add mustard
-                                                o = 1152;
-                                                break;
-                                        }
-                                    }
-                                    o = 1150;
-                                    break;
-                            }
-                            break;
-                        case 2 : //Dinner
-                            cout << "What food? (1) Turkey (2) Chicken (3) Tri-Tip"<< endl;
-                            cin >> choicea;
-                            switch (choicea) {
-                                case 1 : //Turkey
-                                    cout << "Customize order? (Y/N)" << endl;
-                                    cin >> a;
-                                    if (a == 'Y') {
-                                        cout << "Choose a customization for customer: (1) Ketchup (2) Mustard"<< endl;
-                                        cin >> custom;
-                                        switch (custom) {
-                                            case 1 :
-                                                //add Ketchup
-                                                o = 1211;
-                                                break;
-                                            case 2 :
-                                                //add mustard
-                                                o = 1212;
-                                                break;
-                                        }
-                                    }
-                                    o = 1210;
-                                    break;
-                                case 2 : //Chicken
-                                    cout << "Customize order? (Y/N)" << endl;
-                                    cin >> a;
-                                    if (a == 'Y') {
-                                        cout << "Choose a customization for customer: (1) Ketchup (2) Mustard"<< endl;
-                                        cin >> custom;
-                                        switch (custom) {
-                                            case 1 :
-                                                //add Ketchup
-                                                o = 1221;
-                                                break;
-                                            case 2 :
-                                                //add mustard
-                                                o = 1222;
-                                                break;
-                                        }
-                                    }
-                                    o = 1220;
-                                    break;
-                                case 3 : //Tri-Tip
-                                    cout << "Customize order? (Y/N)" << endl;
-                                    cin >> a;
-                                    if (a == 'Y') {
-                                        cout << "Choose a customization for customer: (1) Ketchup (2) Mustard"<< endl;
-                                        cin >> custom;
-                                        switch (custom) {
-                                            case 1 :
-                                                //add Ketchup
-                                                o = 1231;
-                                                break;
-                                            case 2 :
-                                                //add mustard
-                                                o = 1232;
-                                                break;
-                                        }
-                                    }
-                                    o = 1230;
-                                    break;
-                            }
+                        break;
                     }
-                    break;
-                case 2 : //Drink
-                    cout << "What drink? (1) Water (2) Soda"<< endl;
-                    cin >> choicea;
-                    switch (choicea) {
-                        case 1 : //Water
-                            cout << "Customize order? (Y/N)" << endl;
-                            cin >> a;
-                            if (a == 'Y') {
-                                cout << "Choose a customization for customer: (1) Lemon (2) No Ice"<< endl;
-                                cin >> custom;
-                                switch (custom) {
-                                    case 1 :
-                                        //add lemon
-                                        o = 2110;
-                                    case 2 :
-                                        //No ice
-                                        o = 2120;
-                                }
-                            }
-                            o = 2100;
-                            break;
-                        case 2 : //Soda
-                            cout << "Customize order? (Y/N)" << endl;
-                            cin >> a;
-                            if (a == 'Y') {
-                                cout << "Choose a customization for customer: (1) Extra Large (2) No Ice"<< endl;
-                                cin >> custom;
-                                switch (custom) {
-                                    case 1 :
-                                        //Make large
-                                        o = 2210;
-                                    case 2 :
-                                        //No ice
-                                        o = 2220;
-                                }
-                            }
-                            o = 2200;
-                            break;
+                    else
+                    {
+                        q = q->next;
                     }
-                default :
-                    break;
+                    count++;
+                }
+                
+                cout << "Your choice: " ;
+                cin.clear();
+                cin >> time;
+                //r = menuhead;
+                
+                for (int i = 1; i < time ;i++)
+                {
+                    r = r->next;
+                }
+                
+                count = 0;
+                cout << "Please select the number of the item the customer wants to order: " << endl;
+                
+                while (r->Item[count] != "")
+                {
+                    cout << count+1 << " - " << r->Item[count] << endl;
+                    count++;
+                }
+                
+                cout << "Your choice: ";
+                cin.clear();
+                cin >> choicea;
+                
+                cout << "Do you want to customize the order? Please '8' if you do, or type '0' to confirm order: ";
+                cin.clear();
+                cin >> custom;
+                
+                if (custom == 8)
+                {
+                    cout << "Do you want (1) - Lemons or (2) - Remove Ice. Please select the item you want to add to the order: ";
+                    cin.clear();
+                    cin >> custom;
+                    item = (choice * 1000) + (time * 100) + (choicea * 10) + custom;
+                }
+                if (custom == 0)
+                {
+                    item = (choice * 1000) + (time * 100) + (choicea * 10) + custom;
+                }
             }
-            cout << "Are there more customer orders for current table? (Y/N)" << endl;
+            
+            cout << "Are there more orders for this customer?: Type 'y' for yes or 'n' for no: ";
+            cin.clear();
             cin >> m;
-            //inputvector.push_back(o);
-            updateStats();
-            if (m == 'N'){
-                //i = 0;
-                //while(customer!= 0)
-                //{
-                    inputvector.push_back(o);
-                    //cout << "Press 0 to exit current customer" << endl;
-                    //cin >> customer;
-                //}
-                //updateStats();
-                temp = 0;
-            }
-            else //while(customer!= 0)
+            (p->Customer[0][customernumber-1]).push_back(item);
+            if (m == 'y')
             {
-                inputvector.push_back(o);
-                //cout << "Press 0 to exit current customer" << endl;
-                //cin >> customer;
+                updateStats(); // Update food stats
+                a = 'n';
+                continue;
             }
+            else
+            {
+                cout << "Are there more orders for this table? Type 'y' for yes or 'n' for no: ";
+                cin.clear();
+                cin >> m;
+                if (m == 'y')
+                {
+                    a = 'c';
+                    continue;
+                }
+                else
+                {
+                    temp = 0;
+                }
+            }
+            
         }
     }
-    updateStats();
-    splitBills(tablenum);
-
+    if (tablenum != 0)
+    {
+        splitBills(tablenum);
+    }
     return;
 }

@@ -34,8 +34,8 @@ void menuPopulate()
     int f = 0;
     int p = 0;
     string price;
-    infile.open("/Users/Sanjay/Downloads/Menu 2/Menu.txt");
-    outfile.open("/Users/Sanjay/Downloads/Menu 2/Menu_output.txt");
+    infile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/Menu.txt");
+    outfile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/Menu_output.txt");
     infile >> Word;
     menu = new Menu();
     menuhead = menu;
@@ -45,6 +45,14 @@ void menuPopulate()
         {
             
             infile >> menu->Name; // sets the name of the menu
+            if ((menu->Name) == "Drinks" || (menu->Name) == "Alcohol")
+            {
+                menu->foodtype = 'd';
+            }
+            else
+            {
+                menu->foodtype = 'f';
+            }
             infile >> Word; // reads the next string
             
         }
@@ -66,7 +74,7 @@ void menuPopulate()
         if (Word == "Price:")
         { // when the word is price it add the price to the [p element of the array]
             infile >> price;
-            menu->Price[p] = stoi(price);
+            menu->Price[p] = stof(price);
             p++;// moves to the next cell of the price array
             infile >> Word; // reads in another string
         }
@@ -119,3 +127,4 @@ void PrintMenu()
         }
     }
 }
+

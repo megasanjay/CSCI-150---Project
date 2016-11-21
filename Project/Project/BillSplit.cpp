@@ -22,11 +22,15 @@ void splitBills(int tablenum)
     }
     cout << "Who wants to split bills?" << endl;
     cout << "Please choose one of the following customers. Enter '0' if there is no split " << endl ;
-    for (int i = 0; (i < 4) && !((p->Customer[0][i]).empty()); i++)
+    for (int i = 0; i < 4; i++)
     {
-        cout << i + 1 << " ";
+        if ((p->Customer[0][i]).size() >= 1)
+        {
+            cout << i + 1 << " ";
+        }
     }
     cout<<"------------------" << endl;
+    cin.clear();
     cin >> input;
     while(input!= 0)
     {
@@ -35,9 +39,9 @@ void splitBills(int tablenum)
             cout << "Incorrect input. Please choose one of the following customers in order. Enter '0' when done " << endl ;
             for (int i = 0; (i < 4) && !((p->Customer[0][i]).empty()); i++)
             {
-                cout << i+1 << " ";
+                cout << i+1 << "   ";
             }
-            cout << "------------------" << endl;
+            cout << endl << "------------------" << endl;
             cin >> input;
             continue;
         }

@@ -31,8 +31,8 @@ int main(int argc, const char * argv[]) {
     int N;
     int i = 1;
     cout << "Please enter how many tables will be created: " << endl;
-    cin >> N;
-    while(i <= N){
+    //cin >> N;
+    while(i <= 10){
         
         RestTables.insertToBack(i);
         i++;
