@@ -9,7 +9,7 @@
 #include "SLL.hpp"
 #include "Table.hpp"
 
-int TableNum = 1;
+int TableNum;
 
 Table* head;
 
@@ -121,6 +121,8 @@ void SLL::insertToBack(int TableNumber)
     
     p->next = temp;
     temp->next = NULL;
+    
+    TableNum = TableNumber;
     
 }
 

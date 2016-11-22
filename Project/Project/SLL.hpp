@@ -44,6 +44,7 @@ using namespace std;
  */
 
 extern Table* head;
+extern int TableNum;
 
 class SLL
 {

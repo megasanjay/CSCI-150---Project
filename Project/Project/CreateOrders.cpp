@@ -17,27 +17,44 @@ void Orders()
     Menu* q = menuhead;
     Menu* r = menuhead;
     //int i = 1;
-    int o, time, custom, customernumber = 0;
+    int time, custom, customernumber = 0;
     int choice, choicea;
-    int tablenum = 0, temp = 1;
-    int count =0;
+    int tablenum = 0;
+    char temp = 'c' ;
+    int count = 0;
     int item = 0;
     Table* p = head;
-    int input = 0;
+    int input = 1;
     vector<int> inputvector;
     
-    while (temp != 0)
+    while (temp != 'e')
     {
         cout << "Type '0' to return to main menu or Input table number for current order: " << endl;
         cin.clear();
         cin >> temp;
         
-        if (temp == 0)
+        if (!isdigit(temp))
+        {
+            cout << "Invalid input. Please try again: " << endl;
+            continue;
+        }
+        else
+        {
+            input = temp - '0';
+        }
+        
+        if (input == 0)
         {
             continue;
         }
         
-        tablenum = temp;
+        tablenum = input;
+        
+        if (tablenum > TableNum)
+        {
+            cout << "This table is not in the list of tables present. Please try again :" << endl;
+            continue;
+        }
         
         if (tablenum != 0)
         {
@@ -47,7 +64,7 @@ void Orders()
             }
         }
         
-        while (temp != 0)
+        while (input != 0)
         {
             ///Select Customer
             if (a == 'c')
@@ -55,7 +72,7 @@ void Orders()
                 cout << "Please input customer number: " << endl;
                 cin.clear();
                 cin >> customernumber; //Varies depending on how customers are stored
-                if ((customernumber > 5) || (customernumber < 0))//((p->Customer[0][customer]).empty())
+                if ((customernumber >= 5) || (customernumber < 0))//((p->Customer[0][customer]).empty())
                 {
                     cout << "Incorrect input." << endl ;
                     continue;
@@ -204,7 +221,8 @@ void Orders()
                 }
                 else
                 {
-                    temp = 0;
+                    input = 0;
+                    temp = 'e';
                 }
             }
             

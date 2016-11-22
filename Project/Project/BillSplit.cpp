@@ -11,7 +11,7 @@
 void splitBills(int tablenum)
 {
     Table* p = head;
-    int input = 0;
+    char input;
     vector<int> inputvector;
     
     inputvector.clear();
@@ -32,11 +32,11 @@ void splitBills(int tablenum)
     cout<<"------------------" << endl;
     cin.clear();
     cin >> input;
-    while(input!= 0)
+    while((input - '0') != 0)
     {
         if (((p->Customer[0][input - 1]).empty()) || (!isdigit(input)))
         {
-            cout << "Incorrect input. Please choose one of the following customers in order. Enter '0' when done " << endl ;
+            cout << "Invalid input. Please choose one of the following customers in order. Enter '0' when done " << endl ;
             for (int i = 0; (i < 4) && !((p->Customer[0][i]).empty()); i++)
             {
                 cout << i+1 << "   ";
@@ -45,8 +45,8 @@ void splitBills(int tablenum)
             cin >> input;
             continue;
         }
-        inputvector.push_back(input - 1 );
-        cout << "Customer #" << input + 1 << " added. Please selct another customer or enter '0' to exit" << endl;
+        inputvector.push_back((input - '0') - 1 );
+        cout << "Customer #" << (input - '0') + 1 << " added. Please selct another customer or enter '0' to exit" << endl;
         cin >> input;
     }
     if (inputvector.empty())
@@ -179,16 +179,12 @@ void splitTotal(int tablenum, vector<int> &inputvector)
         p = p->next;
     }
     
-    for (int i = 0; i<4; i++)
+    while (!inputvector.empty())
     {
-        if ((p->Customer[0][i]).empty())
-        {
-            continue;
-        }
-        
         customernum = inputvector.back();
+        inputvector.pop_back();
         
-        while (!inputvector.empty())
+        while (p->Customer[0][customernum].empty())
         {
             q = menuhead;
             customchoice = "";
@@ -266,6 +262,7 @@ void splitTotal(int tablenum, vector<int> &inputvector)
         cout << endl <<"Total: " << ROUNDF(total, 100) << endl;
         cout << "-----------------------" << endl;
     }
+    
     nosplitTotal(tablenum, fulltotal);
 }
 
