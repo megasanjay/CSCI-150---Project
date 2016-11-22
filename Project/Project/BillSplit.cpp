@@ -29,7 +29,7 @@ void splitBills(int tablenum)
             cout << i + 1 << " ";
         }
     }
-    cout<<"------------------" << endl;
+    cout << endl << "------------------" << endl;
     cin.clear();
     cin >> input;
     while((input - '0') != 0)
@@ -45,9 +45,17 @@ void splitBills(int tablenum)
             cin >> input;
             continue;
         }
-        inputvector.push_back((input - '0') - 1 );
-        cout << "Customer #" << (input - '0') + 1 << " added. Please selct another customer or enter '0' to exit" << endl;
-        cin >> input;
+        
+        if ((input - '0') == 0)
+        {
+            continue;
+        }
+        else
+        {
+            inputvector.push_back((input - '0') - 1 );
+            cout << "Customer #" << (input - '0') + 1 << " added. Please selct another customer or enter '0' to exit" << endl;
+            cin >> input;
+        }
     }
     if (inputvector.empty())
     {
@@ -67,6 +75,8 @@ void nosplitTotal(int tablenum, float fulltotal)
     int fooditem = 0;
     int foodtype, foodnum, foodcustom;
     float total = fulltotal;
+    string price = "";
+    stringstream stream;
     vector<string> outputvector;
     //int i = 0;
     
@@ -125,12 +135,16 @@ void nosplitTotal(int tablenum, float fulltotal)
             
             if (fooditem == 1)
             {
-                for(int j = 0; j < foodtype; j++)
+                for(int j = 1; j < foodtype; j++)
                 {
                     q = q->next;
                 }
-
-                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(ROUNDF(q->Price[foodnum - 1], 100)));
+                price  = "";
+                stream.str("");
+                stream << fixed << setprecision(2) << (q->Price[foodnum -1]);
+                price = stream.str();
+                
+                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
                 
                 total = total + q->Price[foodnum - 1];
                 continue;
@@ -141,11 +155,17 @@ void nosplitTotal(int tablenum, float fulltotal)
                 {
                     q = q->next;
                 }
-                for(int j = 0; j < foodtype; j++)
+                for(int j = 1; j < foodtype; j++)
                 {
                     q = q->next;
                 }
-                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(ROUNDF(q->Price[foodnum - 1], 100)));
+                
+                price = "";
+                stream.str("");
+                stream << fixed << setprecision(2) << (q->Price[foodnum -1]);
+                price = stream.str();
+                
+                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
                 total = total + q->Price[foodnum - 1];
                 continue;
             }
@@ -157,7 +177,12 @@ void nosplitTotal(int tablenum, float fulltotal)
         cout << outputvector.back() << endl;
         outputvector.pop_back();
     }
-    cout << "\n\n" << "Total to be paid: " << ROUNDF(total, 100) << endl;
+    price  = "";
+    stream.str("");
+    stream << fixed << setprecision(2) << total;
+    price = stream.str();
+    
+    cout << "\n\n" << "Total to be paid: " << price << endl;
 }
 
 void splitTotal(int tablenum, vector<int> &inputvector)
@@ -167,6 +192,8 @@ void splitTotal(int tablenum, vector<int> &inputvector)
     string customchoice;
     int customernum;
     int fooditem = 0;
+    string price = "";
+    stringstream stream;
     int foodtype, foodnum, foodcustom;
     int total = 0;
     float fulltotal = 0;
@@ -226,12 +253,16 @@ void splitTotal(int tablenum, vector<int> &inputvector)
             
             if (fooditem == 1)
             {
-                for(int j = 0; j < foodtype; j++)
+                for(int j = 1; j < foodtype; j++)
                 {
                     q = q->next;
                 }
+                price  = "";
                 
-                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(ROUNDF(q->Price[foodnum - 1], 100)));
+                stream << fixed << setprecision(2) << (q->Price[foodnum -1]);
+                price = stream.str();
+                
+                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
                 
                 total = total + q->Price[foodnum - 1];
                 fulltotal = fulltotal + q->Price[foodnum - 1];
@@ -243,11 +274,17 @@ void splitTotal(int tablenum, vector<int> &inputvector)
                 {
                     q = q->next;
                 }
-                for(int j = 0; j < foodtype; j++)
+                for(int j = 1; j < foodtype; j++)
                 {
                     q = q->next;
                 }
-                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + to_string(ROUNDF(q->Price[foodnum - 1], 100)));
+                price  = "";
+                stream.str("");
+                stream << fixed << setprecision(2) << (q->Price[foodnum -1]);
+                price = stream.str();
+                
+                outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
+                
                 total = total + q->Price[foodnum - 1];
                 fulltotal = fulltotal + q->Price[foodnum - 1];
                 continue;
@@ -259,7 +296,12 @@ void splitTotal(int tablenum, vector<int> &inputvector)
             cout << outputvector.back() << endl;
             outputvector.pop_back();
         }
-        cout << endl <<"Total: " << ROUNDF(total, 100) << endl;
+        price  = "";
+        stream.str("");
+        stream << fixed << setprecision(2) << total;
+        price = stream.str();
+        
+        cout << endl <<"Total: " << price << endl;
         cout << "-----------------------" << endl;
     }
     

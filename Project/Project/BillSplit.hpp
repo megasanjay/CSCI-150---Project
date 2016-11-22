@@ -9,8 +9,6 @@
 #ifndef BillSplit_hpp
 #define BillSplit_hpp
 
-#define ROUNDF(f, c) (((float)((int)((f) * (c))) / (c)))
-
 #include <stdio.h>
 #include "CreateOrders.hpp"
 #include "Menu.hpp"
@@ -19,6 +17,8 @@
 #include <iostream>
 #include <vector>
 #include <cctype>
+#include <iomanip>
+#include <sstream>
 
 using namespace std;
 

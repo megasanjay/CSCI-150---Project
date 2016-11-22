@@ -12,12 +12,15 @@
 
 void Orders()
 {
-    char m;
+    char m = 'n';
     char a = 'c';
+    char continuation = 'n';
+    char custom = 't';
     Menu* q = menuhead;
     Menu* r = menuhead;
     //int i = 1;
-    int time, custom, customernumber = 0;
+    int time;
+    char customernumber = 0;
     int choice, choicea;
     int tablenum = 0;
     char temp = 'c' ;
@@ -72,7 +75,7 @@ void Orders()
                 cout << "Please input customer number: " << endl;
                 cin.clear();
                 cin >> customernumber; //Varies depending on how customers are stored
-                if ((customernumber >= 5) || (customernumber < 0))//((p->Customer[0][customer]).empty())
+                if (((customernumber - '0') >= 5) || ((customernumber - '0') < 0) || (!isdigit(customernumber)))//((p->Customer[0][customer]).empty())
                 {
                     cout << "Incorrect input." << endl ;
                     continue;
@@ -118,23 +121,42 @@ void Orders()
                 cout << "Your choice: ";
                 cin.clear();
                 cin >> choicea;
-                
-                cout << "Do you want to customize the order? Please '8' if you do, or type '0' to confirm order: ";
-                cin.clear();
-                cin >> custom;
-                
-                if (custom == 8)
+                custom = 't';
+                while (custom == 't')
                 {
-                    cout << "Do you want (1) - Ketchup or (2) - Mustard. Please select the item you want to add to the order: ";
+                    cout << "Do you want to customize the order? Please 'y' if you do, or type 'n' to confirm order: ";
                     cin.clear();
                     cin >> custom;
-                    item = (choice * 1000) + (time * 100) + (choicea * 10) + custom;
+                    
+                    if ((!isalpha(custom)) || ( (custom != 'y') && (custom != 'n') ))
+                    {
+                        cout << "Invalid input. Try again." << endl;
+                        custom = 't';
+                        continue;
+                    }
+                    
                 }
-                if (custom == 0)
+                if (custom == 'y')
                 {
-                    item = (choice * 1000) + (time * 100) + (choicea * 10) + custom;
+                    while (custom == 'y')
+                    {
+                        cout << "Do you want (1) - Ketchup or (2) - Mustard. Please select the item you want to add to the order: ";
+                        cin.clear();
+                        cin >> custom;
+                        
+                        if ((!isdigit(custom)) || (((custom - '0') <= 0 ) && ((custom - '0') >= 3)))
+                        {
+                            cout << "Invalid Input. Try again." << endl;
+                            custom = 'y';
+                            continue;
+                        }
+                    }
+                    item = (choice * 1000) + (time * 100) + (choicea * 10) + (custom - '0');
                 }
-                
+                if (custom == 'n')
+                {
+                    item = (choice * 1000) + (time * 100) + (choicea * 10) + 0;
+                }
             }
             if (choice == 2)
             {
@@ -182,50 +204,97 @@ void Orders()
                 cin.clear();
                 cin >> choicea;
                 
-                cout << "Do you want to customize the order? Please '8' if you do, or type '0' to confirm order: ";
-                cin.clear();
-                cin >> custom;
-                
-                if (custom == 8)
+                while (custom == 't')
                 {
-                    cout << "Do you want (1) - Lemons or (2) - Remove Ice. Please select the item you want to add to the order: ";
+                    cout << "Do you want to customize the order? Please 'y' if you do, or type 'n' to confirm order: ";
                     cin.clear();
                     cin >> custom;
-                    item = (choice * 1000) + (time * 100) + (choicea * 10) + custom;
+                    
+                    if ((!isalpha(custom)) || ( (custom != 'y') && (custom != 'n') ))
+                    {
+                        cout << "Invalid input. Try again." << endl;
+                        custom = 't';
+                        continue;
+                    }
                 }
-                if (custom == 0)
+                
+                if (custom == 'y')
                 {
-                    item = (choice * 1000) + (time * 100) + (choicea * 10) + custom;
+                    while (custom == 'y')
+                    {
+                        cout << "Do you want (1) - Lemons or (2) - Remove Ice. Please select the item you want to add to the order: ";
+                        cin.clear();
+                        cin >> custom;
+                        
+                        if ((!isdigit(custom)) || (((custom - '0') <= 0 ) && ((custom - '0') >= 3)))
+                        {
+                            cout << "Invalid Input. Try again." << endl;
+                            custom = 'y';
+                            continue;
+                        }
+                    }
+                    item = (choice * 1000) + (time * 100) + (choicea * 10) + (custom - '0');
+                }
+                if (custom == 'n')
+                {
+                    item = (choice * 1000) + (time * 100) + (choicea * 10) + 0;
                 }
             }
             
-            cout << "Are there more orders for this customer?: Type 'y' for yes or 'n' for no: ";
-            cin.clear();
-            cin >> m;
-            (p->Customer[0][customernumber-1]).push_back(item);
-            if (m == 'y')
+            (p->Customer[0][(customernumber - '0') - 1]).push_back(item);
+            
+            m = 'n';
+            continuation = 'n';
+            
+            while (m == 'n')
             {
-                updateStats(); // Update food stats
-                a = 'n';
-                continue;
-            }
-            else
-            {
-                cout << "Are there more orders for this table? Type 'y' for yes or 'n' for no: ";
+                cout << "Are there more orders for this customer?: Type 'y' for yes or 'n' for no: ";
                 cin.clear();
                 cin >> m;
-                if (m == 'y')
+                
+                if ((!(isalpha(m))) || ((m != 'y') && (m != 'n')))
                 {
-                    a = 'c';
+                    cout << "Invalid Input. Try again." << endl;
+                    m = 'n';
                     continue;
                 }
-                else
+                
+                if (m == 'y')
                 {
-                    input = 0;
-                    temp = 'e';
+                    updateStats();
+                    a = 'n';
+                    continue;
+                }
+                if (m == 'n')
+                {
+                    while (continuation == 'n')
+                    {
+                        cout << "Are there more orders for this table? Type 'y' for yes or 'n' for no: ";
+                        cin.clear();
+                        cin >> continuation;
+                        
+                        if ((!isalpha(continuation)) || ((continuation != 'y') && (continuation != 'n')))
+                        {
+                            cout << "Invalid Input. Try again." << endl;
+                            continuation = 'n';
+                            continue;
+                        }
+                        
+                        if (continuation == 'y')
+                        {
+                            a = 'c';
+                            continue;
+                        }
+                        if (continuation == 'n')
+                        {
+                            input = 0;
+                            temp = 'e';
+                            continuation = 'y';
+                        }
+                    }
+                    m = 'y';
                 }
             }
-            
         }
     }
     if (tablenum != 0)
