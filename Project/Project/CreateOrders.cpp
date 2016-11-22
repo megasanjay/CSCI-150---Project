@@ -30,8 +30,11 @@ void Orders()
     int input = 1;
     vector<int> inputvector;
     
+    system("CLS");
+    
     while (temp != 'e')
     {
+        
         cout << "Type '0' to return to main menu or Input table number for current order: " << endl;
         cin.clear();
         cin >> temp;
@@ -55,7 +58,7 @@ void Orders()
         
         if (tablenum > TableNum)
         {
-            cout << "This table is not in the list of tables present. Please try again :" << endl;
+            cout << "This table is not in the list of tables present. Please try again." << endl;
             continue;
         }
         
@@ -66,6 +69,8 @@ void Orders()
                 p = p->next;
             }
         }
+        
+        system("CLS");
         
         while (input != 0)
         {
@@ -83,7 +88,8 @@ void Orders()
             }
             ///Select food or drink
             //--------------------------PrintMenu();
-            cout << "Press 1 for Food, 2 for Drink" << endl;
+            system("CLS");
+            cout << "Press 1 for Food, 2 for Drinks" << endl;
             cin.clear();
             cin >> choice;
             q  = menuhead;
@@ -242,7 +248,7 @@ void Orders()
             }
             
             (p->Customer[0][(customernumber - '0') - 1]).push_back(item);
-            
+            cout << "Item added for customer #" << customernumber;
             m = 'n';
             continuation = 'n';
             
@@ -269,6 +275,7 @@ void Orders()
                 {
                     while (continuation == 'n')
                     {
+                        system("CLS");
                         cout << "Are there more orders for this table? Type 'y' for yes or 'n' for no: ";
                         cin.clear();
                         cin >> continuation;

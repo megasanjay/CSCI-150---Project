@@ -148,6 +148,8 @@ void addlogin()
     string output = "";
     
     outfile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/login.txt");
+    
+    system("CLS");
 
     cout << "Adding a new user..." << endl;
     cout << "Type '1' if the new user is a Manager or '9' if the new user is a member of the wait staff. Press '0' to exit: " << endl;
@@ -162,6 +164,7 @@ void addlogin()
     {
         if (input == 1)
         {
+            system("CLS");
             cout << "Input Manager username:" << endl;
             cin >> username;
             cout << "Input Manager password:" << endl;
@@ -173,6 +176,7 @@ void addlogin()
         }
         if (input == 9)
         {
+            system("CLS");
             cout << "Input Wait-Staff username:" << endl;
             cin >> username;
             cout << "Input Wait-Staff password:" << endl;
@@ -184,6 +188,7 @@ void addlogin()
         }
         if ((input != 1) && (input != 9))
         {
+            system("CLS");
             cout << "Invalid choice. Please Type '1' if the new user is a Manager or '9' if the new user is a member of the wait staff. Press '0' to exit: " << endl;
             cin >> input;
             if (input == 0)

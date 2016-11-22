@@ -20,6 +20,7 @@ void splitBills(int tablenum)
     {
         p = p->next;
     }
+    system("CLS");
     cout << "Who wants to split bills?" << endl;
     cout << "Please choose one of the following customers. Enter '0' if there is no split " << endl ;
     for (int i = 0; i < 4; i++)
@@ -53,6 +54,7 @@ void splitBills(int tablenum)
         else
         {
             inputvector.push_back((input - '0') - 1 );
+            system("CLS");
             cout << "Customer #" << (input - '0') + 1 << " added. Please selct another customer or enter '0' to exit" << endl;
             cin >> input;
         }
@@ -182,7 +184,7 @@ void nosplitTotal(int tablenum, float fulltotal)
     stream << fixed << setprecision(2) << total;
     price = stream.str();
     
-    cout << "\n\n" << "Total to be paid: " << price << endl;
+    cout << "\n" << "Total to be paid: " << price << endl;
 }
 
 void splitTotal(int tablenum, vector<int> &inputvector)
@@ -200,6 +202,7 @@ void splitTotal(int tablenum, vector<int> &inputvector)
     vector<string> outputvector;
     
     outputvector.clear();
+    system("CLS");
     
     while ((p->classTableNum) != tablenum)
     {

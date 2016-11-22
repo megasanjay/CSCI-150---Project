@@ -14,7 +14,6 @@
 #include "Menu.hpp"
 #include <unistd.h>
 #include <stdlib.h>
-//#include <curses.h>
 
 using namespace std;
 
@@ -43,11 +42,7 @@ int main(int argc, const char * argv[]) {
     
     menuPopulate();     // Create the menu data structure
     
-    //system("CLS");      // Clear screen in windows. Dooesn't work on macs
-    //clear();
-    //refresh();
-    //cout << "\033[2J\033[1;1H";
-    //system("clear");
+    system("CLS");      // Clear screen in windows. Dooesn't work on macs
     cout << "Logging in....." << endl;
     //sleep(2);
     system("CLS");
