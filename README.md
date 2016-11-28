@@ -9,6 +9,7 @@ Manager login - adam:adam
 Waitstaff login - maria:maria
 
 I've forgotten the rest 😓. Y'all can add a login if you want. The feature is available if you login as a 'Manager'.
+
 'Chef' functionality is currently only availabe as a 'Manager'. Not adding a new login yet, probably for a future release.
 
 
