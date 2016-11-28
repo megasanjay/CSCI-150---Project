@@ -1,5 +1,7 @@
 # CSCI-150---Project - Restaurant Order Management System
 
+There are two files. The first folder is for people using Visual Studio and the second one is for Xcode. Choose responsibly.
+
 Might want to change the path to the text filed in the 'Menu', 'Stats' and 'Login' files. 
 
 Login passswords are enctypted. I've used the same name for simplicity. 
