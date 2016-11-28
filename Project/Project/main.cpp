@@ -31,7 +31,7 @@ int main(int argc, const char * argv[]) {
     //How many tables are going to be created?
     int N;
     int i = 1;
-    cout << "Please enter how many tables will be created: " << endl;
+    cout << "Please enter how many tables will be created: " << endl << ">> ";
     //cin >> N;
     while(i <= 10){
         
@@ -52,7 +52,7 @@ int main(int argc, const char * argv[]) {
     while (quitstate != "exit")
     {
         login();
-        cout << "Type 'exit' to exit the program or enter any character to continue: " << endl;
+        cout << "Type 'exit' to exit the program or enter any character to continue: " << endl << ">> ";
         cin >> quitstate;
     }
     

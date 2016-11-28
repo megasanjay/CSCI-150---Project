@@ -13,6 +13,7 @@
 #include <iostream>
 #include "CreateOrders.hpp"
 #include "Menu.hpp"
+#include "BillSplit.hpp"
 #include "Login.hpp"
 #include "Stats.hpp"
 

@@ -36,7 +36,7 @@ void Orders()
     while (temp != 'e')
     {
         
-        cout << "Type '0' to return to main menu or Input table number for current order: " << endl;
+        cout << "Type '0' to return to main menu or Input table number for current order: " << endl << ">> ";
         cin.clear();
         cin >> temp;
         
@@ -72,13 +72,14 @@ void Orders()
         }
         
         system("CLS");
+        p->isAvailable = false;
         
         while (input != 0)
         {
             ///Select Customer
             if (a == 'c')
             {
-                cout << "Please input customer number: " << endl;
+                cout << "Please input customer number: " << endl << ">> ";
                 cin.clear();
                 cin >> customernumber; //Varies depending on how customers are stored
                 if (((customernumber - '0') >= 5) || ((customernumber - '0') < 0) || (!isdigit(customernumber)))//((p->Customer[0][customer]).empty())
@@ -90,7 +91,7 @@ void Orders()
             ///Select food or drink
             //--------------------------PrintMenu();
             system("CLS");
-            cout << "Press 1 for Food, 2 for Drinks" << endl;
+            cout << "Press 1 for Food, 2 for Drinks" << endl << ">> ";
             cin.clear();
             cin >> choice;
             q  = menuhead;
@@ -106,7 +107,7 @@ void Orders()
                     count++;
                 }
                 
-                cout << "Your choice: " ;
+                cout << "Your choice: ";
                 cin.clear();
                 cin >> time;
                 //r = menuhead;
@@ -131,7 +132,7 @@ void Orders()
                 custom = 't';
                 while (custom == 't')
                 {
-                    cout << "Do you want to customize the order? Please 'y' if you do, or type 'n' to confirm order: ";
+                    cout << "Do you want to customize the order? Please 'y' if you do, or type 'n' to confirm order: " << endl << ">> ";
                     cin.clear();
                     cin >> custom;
                     
@@ -147,7 +148,7 @@ void Orders()
                 {
                     while (custom == 'y')
                     {
-                        cout << "Do you want (1) - Ketchup or (2) - Mustard. Please select the item you want to add to the order: ";
+                        cout << "Do you want (1) - Ketchup or (2) - Mustard. Please select the item you want to add to the order: " << endl << ">> ";
                         cin.clear();
                         cin >> custom;
                         
@@ -215,7 +216,7 @@ void Orders()
                 
                 while (custom == 't')
                 {
-                    cout << "Do you want to customize the order? Please 'y' if you do, or type 'n' to confirm order: ";
+                    cout << "Do you want to customize the order? Please 'y' if you do, or type 'n' to confirm order: " << endl << ">> ";
                     cin.clear();
                     cin >> custom;
                     
@@ -231,7 +232,7 @@ void Orders()
                 {
                     while (custom == 'y')
                     {
-                        cout << "Do you want (1) - Lemons or (2) - Remove Ice. Please select the item you want to add to the order: ";
+                        cout << "Do you want (1) - Lemons or (2) - Remove Ice. Please select the item you want to add to the order: " << endl << ">> ";
                         cin.clear();
                         cin >> custom;
                         
@@ -255,13 +256,13 @@ void Orders()
             (p->Customer[0][(customernumber - '0') - 1]).push_back(item);
             //foodname = q->Name;
             //updatefoodStats(q->Name, q->Item[choicea-1]);
-            cout << "Item added for customer #" << customernumber << ". ";
+            cout << "Item added for customer #" << customernumber << ". " << endl;
             m = 'n';
             continuation = 'n';
             
             while (m == 'n')
             {
-                cout << "Are there more orders for this customer?: Type 'y' for yes or 'n' for no: ";
+                cout << "Are there more orders for this customer?: Type 'y' for yes or 'n' for no." << endl << ">> ";
                 cin.clear();
                 cin >> m;
                 
@@ -282,7 +283,7 @@ void Orders()
                     while (continuation == 'n')
                     {
                         system("CLS");
-                        cout << "Are there more orders for this table? Type 'y' for yes or 'n' for no: ";
+                        cout << "Are there more orders for this table? Type 'y' for yes or 'n' for no." << endl << ">> ";
                         cin.clear();
                         cin >> continuation;
                         
@@ -309,10 +310,6 @@ void Orders()
                 }
             }
         }
-    }
-    if (tablenum != 0)
-    {
-        splitBills(tablenum);
     }
     return;
 }
