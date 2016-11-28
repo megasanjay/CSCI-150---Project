@@ -13,6 +13,7 @@
 #include "CreateOrders.hpp"
 #include "Menu.hpp"
 #include "SLL.hpp"
+#include "Stats.hpp"
 //#include "Table.hpp"
 #include <iostream>
 #include <vector>

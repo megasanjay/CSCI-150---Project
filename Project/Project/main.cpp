@@ -12,6 +12,7 @@
 #include "Table.hpp"
 #include "Login.hpp"
 #include "Menu.hpp"
+#include "Stats.hpp"
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -24,6 +25,7 @@ int main(int argc, const char * argv[]) {
     string loginusername;
     string loginpassword;
     string quitstate = "";
+    totalcounter = 0;
     //Declare object for restaurant tables
     
     //How many tables are going to be created?
@@ -53,6 +55,8 @@ int main(int argc, const char * argv[]) {
         cout << "Type 'exit' to exit the program or enter any character to continue: " << endl;
         cin >> quitstate;
     }
+    
+    updateStats();
     
     return 0;
 }

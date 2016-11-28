@@ -23,6 +23,7 @@ void Orders()
     char customernumber = 0;
     int choice, choicea;
     int tablenum = 0;
+    //string foodname;
     char temp = 'c' ;
     int count = 0;
     int item = 0;
@@ -158,10 +159,12 @@ void Orders()
                         }
                     }
                     item = (choice * 1000) + (time * 100) + (choicea * 10) + (custom - '0');
+                    //updatefoodStats(q->Name, q->Item[choicea-1]);
                 }
                 if (custom == 'n')
                 {
                     item = (choice * 1000) + (time * 100) + (choicea * 10) + 0;
+                    //updatefoodStats(q->Name, q->Item[choicea-1]);
                 }
             }
             if (choice == 2)
@@ -240,15 +243,19 @@ void Orders()
                         }
                     }
                     item = (choice * 1000) + (time * 100) + (choicea * 10) + (custom - '0');
+                    //updatefoodStats(q->Name, q->Item[choicea-1]);
                 }
                 if (custom == 'n')
                 {
                     item = (choice * 1000) + (time * 100) + (choicea * 10) + 0;
+                    //updatefoodStats(q->Name, q->Item[choicea-1]);
                 }
             }
             
             (p->Customer[0][(customernumber - '0') - 1]).push_back(item);
-            cout << "Item added for customer #" << customernumber;
+            //foodname = q->Name;
+            //updatefoodStats(q->Name, q->Item[choicea-1]);
+            cout << "Item added for customer #" << customernumber << ". ";
             m = 'n';
             continuation = 'n';
             
@@ -267,7 +274,6 @@ void Orders()
                 
                 if (m == 'y')
                 {
-                    updateStats();
                     a = 'n';
                     continue;
                 }

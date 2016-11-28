@@ -147,7 +147,7 @@ void nosplitTotal(int tablenum, float fulltotal)
                 price = stream.str();
                 
                 outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
-                
+                updatefoodStats(q->Name, q->Item[foodnum - 1]);
                 total = total + q->Price[foodnum - 1];
                 continue;
             }
@@ -168,6 +168,7 @@ void nosplitTotal(int tablenum, float fulltotal)
                 price = stream.str();
                 
                 outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
+                updatefoodStats(q->Name, q->Item[foodnum - 1]);
                 total = total + q->Price[foodnum - 1];
                 continue;
             }
@@ -179,6 +180,9 @@ void nosplitTotal(int tablenum, float fulltotal)
         cout << outputvector.back() << endl;
         outputvector.pop_back();
     }
+    
+    updateTotal(total);
+    
     price  = "";
     stream.str("");
     stream << fixed << setprecision(2) << total;
@@ -266,6 +270,7 @@ void splitTotal(int tablenum, vector<int> &inputvector)
                 price = stream.str();
                 
                 outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
+                updatefoodStats(q->Name, q->Item[foodnum - 1]);
                 
                 total = total + q->Price[foodnum - 1];
                 fulltotal = fulltotal + q->Price[foodnum - 1];
@@ -287,6 +292,7 @@ void splitTotal(int tablenum, vector<int> &inputvector)
                 price = stream.str();
                 
                 outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
+                updatefoodStats(q->Name, q->Item[foodnum - 1]);
                 
                 total = total + q->Price[foodnum - 1];
                 fulltotal = fulltotal + q->Price[foodnum - 1];
