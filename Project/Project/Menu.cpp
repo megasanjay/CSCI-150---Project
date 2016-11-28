@@ -34,8 +34,8 @@ void menuPopulate()
     int f = 0;
     int p = 0;
     string price;
-    infile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/Menu.txt");
-    outfile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/Menu_output.txt");
+    infile.open("C:\\Users\\sanja\\OneDrive\\Documents\\C++\\CSCI-150---Project\\Project\\Project\\Menu.txt");
+    //outfile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/Menu_output.txt");
     infile >> Word;
     menu = new Menu();
     menuhead = menu;
@@ -102,7 +102,7 @@ void PrintMenu()
     while (front->Name != "")
     { // continues to print the menu till the menus end
         cout << endl << front->Name << " Menu:" << endl; // print the name of the menu
-        for (int i, j= 0; i < 100; i++,j++)
+        for (int i = 0, j= 0; i < 100; i++,j++)
         { // for loop to go through the arrays
             if (front->Item[i] == "")
             { // if there is a new item in the array sine the array contains 100 cells, i dont want to keep printing the "" cells

@@ -23,7 +23,7 @@ void login()
     string word;
     int stafftype = 0;
     
-    infile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/login.txt");
+    infile.open("C:\\Users\\sanja\\OneDrive\\Documents\\C++\\CSCI-150---Project\\Project\\Project\\login.txt");
 
     // Create local password storage;
     
@@ -63,8 +63,8 @@ void login()
             system("CLS");
             cout << "3 attempts used. Please wait 5 seconds." << endl << endl;
             count = 1;
-			//Sleep(5000); for windows
-            sleep(5); // for mac
+			Sleep(5000); //for windows
+            //sleep(5); // for mac
         }
         system("CLS");
         cout << "Enter 'quit' in the 'Username' field to exit the login process or type in your username:" << endl;
@@ -147,7 +147,7 @@ void addlogin()
     string password;
     string output = "";
     
-    outfile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/login.txt");
+    outfile.open("C:\\Users\\sanja\\OneDrive\\Documents\\C++\\CSCI-150---Project\\Project\\Project\\login.txt");
     
     system("CLS");
 
