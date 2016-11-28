@@ -15,4 +15,5 @@ Table::Table()
         this->Customer[0][i].clear();
     }
     this->isAvailable = true;
+    this->overflow = 0;
 }

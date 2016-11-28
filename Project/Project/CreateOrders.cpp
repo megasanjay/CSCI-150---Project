@@ -18,6 +18,7 @@ void Orders()
     char custom = 't';
     Menu* q = menuhead;
     Menu* r = menuhead;
+    bool flag = true;
     //int i = 1;
     int time;
     char customernumber = 0;
@@ -25,6 +26,7 @@ void Orders()
     int tablenum = 0;
     //string foodname;
     char temp = 'c' ;
+    string itablenum;
     int count = 0;
     int item = 0;
     Table* p = head;
@@ -36,23 +38,51 @@ void Orders()
     while (temp != 'e')
     {
         
-        cout << "Type '0' to return to main menu or Input table number for current order: " << endl << ">> ";
+        cout << "Type '0' to return to main menu or Input the table number for current order: " << endl << ">> ";
         cin.clear();
-        cin >> temp;
+        cin >> itablenum;
         
-        if (!isdigit(temp))
+        flag = true;
+        
+        if (itablenum.length() > 1)
         {
-            cout << "Invalid input. Please try again: " << endl;
-            continue;
+            for(int i = 0; i < itablenum.length(); i++)
+            {
+                if (!isdigit(itablenum[i]))
+                {
+                    cout << "Invalid input. Please try again: " << endl;
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+            {
+                input = stoi(itablenum);
+            }
+            else
+            {
+                continue;
+            }
         }
         else
         {
-            input = temp - '0';
-        }
-        
-        if (input == 0)
-        {
-            continue;
+            temp = itablenum[0];
+            
+            if (!isdigit(temp))
+            {
+                cout << "Invalid input. Please try again: " << endl;
+                continue;
+            }
+            else
+            {
+                input = temp - '0';
+            }
+            
+            if (input == 0)
+            {
+                continue;
+            }
+            
         }
         
         tablenum = input;
