@@ -1,0 +1,13 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   CSCI 150 Project/.vs/CSCI 150 Project/v14/.suo
+#	modified:   CSCI 150 Project/CSCI 150 Project.VC.db
+#	modified:   Project/Project/main.cpp
+#	new file:   y5h1zjjg.q4x.txt
+#
+

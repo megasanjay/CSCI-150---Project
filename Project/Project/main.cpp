@@ -13,6 +13,7 @@
 #include "Login.hpp"
 #include "Menu.hpp"
 #include "Stats.hpp"
+#include <Windows.h>
 //#include <unistd.h>
 #include <stdlib.h>
 
@@ -40,14 +41,14 @@ int main(int argc, const char * argv[]) {
     }
     
     
-    RestTables.printAll();
+    RestTables.printAll(); // Show Tables created
     
     menuPopulate();     // Create the menu data structure
     
     system("CLS");      // Clear screen in windows. Dooesn't work on macs
-    cout << "Logging in....." << endl;
+    cout << "Logging in....." << endl; 
 	Sleep(1); //for windows
-    //sleep(2);
+    //sleep(2);	// for mac
     system("CLS");
     //PrintMenu();
     while (quitstate != "exit")
@@ -58,6 +59,6 @@ int main(int argc, const char * argv[]) {
     }
     
     updateStats();
-    
+    // Testing commits
     return 0;
 }

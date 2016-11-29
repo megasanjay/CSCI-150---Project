@@ -75,7 +75,7 @@ void updateStats()
 	_localtime32_s(&newtime, &aclock);   // Convert time to struct tm form.
 	errNum = asctime_s(buffer, 32, &newtime);
 
-    pointer  = statcounter.begin();
+    pointer  = statcounter.begin(); 
     divider.str("");
     divider << left << setfill('-') << setw(65) << "-" << endl;
     
