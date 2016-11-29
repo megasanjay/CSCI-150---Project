@@ -152,7 +152,7 @@ void addlogin()
     system("CLS");
 
     cout << "Adding a new user..." << endl;
-    cout << "Type '1' if the new user is a Manager or '9' if the new user is a member of the wait staff. Press '0' to exit: " << endl;
+    cout << "Type '1' if the new user is a Manager or '9' if the new user is a member of the wait staff. Press '0' to exit: " << endl << ">> ";
     cin >> input;
     
     if (input == 0)
@@ -189,7 +189,7 @@ void addlogin()
         if ((input != 1) && (input != 9))
         {
             system("CLS");
-            cout << "Invalid choice. Please Type '1' if the new user is a Manager or '9' if the new user is a member of the wait staff. Press '0' to exit: " << endl;
+            cout << "Invalid choice. Please Type '1' if the new user is a Manager or '9' if the new user is a member of the wait staff. Press '0' to exit." << endl << ">> ";
             cin >> input;
             if (input == 0)
             {

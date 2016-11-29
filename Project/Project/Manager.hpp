@@ -10,8 +10,10 @@
 #define Manager_hpp
 
 #include <stdio.h>
+#include <iostream>
 #include "CreateOrders.hpp"
 #include "Menu.hpp"
+#include "BillSplit.hpp"
 #include "Login.hpp"
 #include "Stats.hpp"
 

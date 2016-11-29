@@ -10,8 +10,21 @@
 #define Stats_hpp
 
 #include <stdio.h>
+#include <unordered_map>
+#include <string>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+
+using namespace std;
 
 void statsCheck();
+void updatefoodStats(string name, string item);
+void updateTotal(int total);
+void populatestats();
 void updateStats();
+
+extern int totalcounter;
 
 #endif /* Stats_hpp */

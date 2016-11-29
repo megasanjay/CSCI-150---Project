@@ -44,6 +44,7 @@ public:
     /*The table number for each Table Node will be calculated using the global pointer*/
     int classTableNum; //What is the table number?
     bool isAvailable; //is the table available?
+    int overflow;
     
     /*The idea here is to create a vector array of objects (customers)
      This is because we don't know how many people will be sitting at

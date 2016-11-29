@@ -18,12 +18,15 @@ void Orders()
     char custom = 't';
     Menu* q = menuhead;
     Menu* r = menuhead;
+    bool flag = true;
     //int i = 1;
     int time;
     char customernumber = 0;
     int choice, choicea;
     int tablenum = 0;
+    //string foodname;
     char temp = 'c' ;
+    string itablenum;
     int count = 0;
     int item = 0;
     Table* p = head;
@@ -35,23 +38,51 @@ void Orders()
     while (temp != 'e')
     {
         
-        cout << "Type '0' to return to main menu or Input table number for current order: " << endl;
+        cout << "Type '0' to return to main menu or Input the table number for current order: " << endl << ">> ";
         cin.clear();
-        cin >> temp;
+        cin >> itablenum;
         
-        if (!isdigit(temp))
+        flag = true;
+        
+        if (itablenum.length() > 1)
         {
-            cout << "Invalid input. Please try again: " << endl;
-            continue;
+            for(int i = 0; i < itablenum.length(); i++)
+            {
+                if (!isdigit(itablenum[i]))
+                {
+                    cout << "Invalid input. Please try again: " << endl;
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+            {
+                input = stoi(itablenum);
+            }
+            else
+            {
+                continue;
+            }
         }
         else
         {
-            input = temp - '0';
-        }
-        
-        if (input == 0)
-        {
-            continue;
+            temp = itablenum[0];
+            
+            if (!isdigit(temp))
+            {
+                cout << "Invalid input. Please try again: " << endl;
+                continue;
+            }
+            else
+            {
+                input = temp - '0';
+            }
+            
+            if (input == 0)
+            {
+                continue;
+            }
+            
         }
         
         tablenum = input;
@@ -71,13 +102,14 @@ void Orders()
         }
         
         system("CLS");
+        p->isAvailable = false;
         
         while (input != 0)
         {
             ///Select Customer
             if (a == 'c')
             {
-                cout << "Please input customer number: " << endl;
+                cout << "Please input customer number: " << endl << ">> ";
                 cin.clear();
                 cin >> customernumber; //Varies depending on how customers are stored
                 if (((customernumber - '0') >= 5) || ((customernumber - '0') < 0) || (!isdigit(customernumber)))//((p->Customer[0][customer]).empty())
@@ -89,7 +121,7 @@ void Orders()
             ///Select food or drink
             //--------------------------PrintMenu();
             system("CLS");
-            cout << "Press 1 for Food, 2 for Drinks" << endl;
+            cout << "Press 1 for Food, 2 for Drinks" << endl << ">> ";
             cin.clear();
             cin >> choice;
             q  = menuhead;
@@ -105,7 +137,7 @@ void Orders()
                     count++;
                 }
                 
-                cout << "Your choice: " ;
+                cout << "Your choice: ";
                 cin.clear();
                 cin >> time;
                 //r = menuhead;
@@ -130,7 +162,7 @@ void Orders()
                 custom = 't';
                 while (custom == 't')
                 {
-                    cout << "Do you want to customize the order? Please 'y' if you do, or type 'n' to confirm order: ";
+                    cout << "Do you want to customize the order? Please 'y' if you do, or type 'n' to confirm order: " << endl << ">> ";
                     cin.clear();
                     cin >> custom;
                     
@@ -146,7 +178,7 @@ void Orders()
                 {
                     while (custom == 'y')
                     {
-                        cout << "Do you want (1) - Ketchup or (2) - Mustard. Please select the item you want to add to the order: ";
+                        cout << "Do you want (1) - Ketchup or (2) - Mustard. Please select the item you want to add to the order: " << endl << ">> ";
                         cin.clear();
                         cin >> custom;
                         
@@ -158,10 +190,12 @@ void Orders()
                         }
                     }
                     item = (choice * 1000) + (time * 100) + (choicea * 10) + (custom - '0');
+                    //updatefoodStats(q->Name, q->Item[choicea-1]);
                 }
                 if (custom == 'n')
                 {
                     item = (choice * 1000) + (time * 100) + (choicea * 10) + 0;
+                    //updatefoodStats(q->Name, q->Item[choicea-1]);
                 }
             }
             if (choice == 2)
@@ -212,7 +246,7 @@ void Orders()
                 
                 while (custom == 't')
                 {
-                    cout << "Do you want to customize the order? Please 'y' if you do, or type 'n' to confirm order: ";
+                    cout << "Do you want to customize the order? Please 'y' if you do, or type 'n' to confirm order: " << endl << ">> ";
                     cin.clear();
                     cin >> custom;
                     
@@ -228,7 +262,7 @@ void Orders()
                 {
                     while (custom == 'y')
                     {
-                        cout << "Do you want (1) - Lemons or (2) - Remove Ice. Please select the item you want to add to the order: ";
+                        cout << "Do you want (1) - Lemons or (2) - Remove Ice. Please select the item you want to add to the order: " << endl << ">> ";
                         cin.clear();
                         cin >> custom;
                         
@@ -240,21 +274,25 @@ void Orders()
                         }
                     }
                     item = (choice * 1000) + (time * 100) + (choicea * 10) + (custom - '0');
+                    //updatefoodStats(q->Name, q->Item[choicea-1]);
                 }
                 if (custom == 'n')
                 {
                     item = (choice * 1000) + (time * 100) + (choicea * 10) + 0;
+                    //updatefoodStats(q->Name, q->Item[choicea-1]);
                 }
             }
             
             (p->Customer[0][(customernumber - '0') - 1]).push_back(item);
-            cout << "Item added for customer #" << customernumber;
+            //foodname = q->Name;
+            //updatefoodStats(q->Name, q->Item[choicea-1]);
+            cout << "Item added for customer #" << customernumber << ". " << endl;
             m = 'n';
             continuation = 'n';
             
             while (m == 'n')
             {
-                cout << "Are there more orders for this customer?: Type 'y' for yes or 'n' for no: ";
+                cout << "Are there more orders for this customer?: Type 'y' for yes or 'n' for no." << endl << ">> ";
                 cin.clear();
                 cin >> m;
                 
@@ -267,7 +305,6 @@ void Orders()
                 
                 if (m == 'y')
                 {
-                    updateStats();
                     a = 'n';
                     continue;
                 }
@@ -276,7 +313,7 @@ void Orders()
                     while (continuation == 'n')
                     {
                         system("CLS");
-                        cout << "Are there more orders for this table? Type 'y' for yes or 'n' for no: ";
+                        cout << "Are there more orders for this table? Type 'y' for yes or 'n' for no." << endl << ">> ";
                         cin.clear();
                         cin >> continuation;
                         
@@ -303,10 +340,6 @@ void Orders()
                 }
             }
         }
-    }
-    if (tablenum != 0)
-    {
-        splitBills(tablenum);
     }
     return;
 }

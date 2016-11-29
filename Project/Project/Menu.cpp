@@ -34,7 +34,8 @@ void menuPopulate()
     int f = 0;
     int p = 0;
     string price;
-    infile.open("C:\\Users\\sanja\\OneDrive\\Documents\\C++\\CSCI-150---Project\\Project\\Project\\Menu.txt");
+    //infile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/Menu.txt");
+	infile.open("C:\\Users\\sanja\\OneDrive\\Documents\\C++\\CSCI-150---Project\\Project\\Project\\Menu.txt");
     //outfile.open("/Users/Sanjay/Documents/CSCI 150 - Project/Project/Project/Menu_output.txt");
     infile >> Word;
     menu = new Menu();

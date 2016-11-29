@@ -1,3 +1,8 @@
-﻿  Menu.cpp
+﻿  WaitStaff.cpp
+  BillSplit.cpp
+c:\users\sanja\onedrive\documents\c++\csci-150---project\project\project\billsplit.cpp(187): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\sanja\onedrive\documents\c++\csci-150---project\project\project\billsplit.cpp(279): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\sanja\onedrive\documents\c++\csci-150---project\project\project\billsplit.cpp(301): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
   CSCI 150 Project.vcxproj -> C:\Users\sanja\OneDrive\Documents\C++\CSCI-150---Project\CSCI 150 Project\Debug\CSCI 150 Project.exe
   CSCI 150 Project.vcxproj -> C:\Users\sanja\OneDrive\Documents\C++\CSCI-150---Project\CSCI 150 Project\Debug\CSCI 150 Project.pdb (Full PDB)

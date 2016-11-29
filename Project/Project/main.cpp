@@ -12,8 +12,8 @@
 #include "Table.hpp"
 #include "Login.hpp"
 #include "Menu.hpp"
+#include "Stats.hpp"
 //#include <unistd.h>
-#include <Windows.h>
 #include <stdlib.h>
 
 using namespace std;
@@ -25,12 +25,13 @@ int main(int argc, const char * argv[]) {
     string loginusername;
     string loginpassword;
     string quitstate = "";
+    totalcounter = 0;
     //Declare object for restaurant tables
     
     //How many tables are going to be created?
     int N;
     int i = 1;
-    cout << "Please enter how many tables will be created: " << endl;
+    cout << "Please enter how many tables will be created: " << endl << ">> ";
     //cin >> N;
     while(i <= 10){
         
@@ -45,15 +46,18 @@ int main(int argc, const char * argv[]) {
     
     system("CLS");      // Clear screen in windows. Dooesn't work on macs
     cout << "Logging in....." << endl;
+	Sleep(1); //for windows
     //sleep(2);
     system("CLS");
     //PrintMenu();
     while (quitstate != "exit")
     {
         login();
-        cout << "Type 'exit' to exit the program or enter any character to continue: " << endl;
+        cout << "Type 'exit' to exit the program or enter any character to continue: " << endl << ">> ";
         cin >> quitstate;
     }
+    
+    updateStats();
     
     return 0;
 }

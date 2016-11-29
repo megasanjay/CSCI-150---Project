@@ -1,0 +1,62 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+# Conflicts:
+#	Project/Project/main.cpp
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 8 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   CSCI 150 Project/.vs/CSCI 150 Project/v14/.suo
+#	modified:   CSCI 150 Project/CSCI 150 Project.VC.db
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/BillSplit.obj
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/CSCI 150 Project.log
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/CSCI 150 Project.tlog/CL.read.1.tlog
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/CSCI 150 Project.tlog/CL.write.1.tlog
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/CSCI 150 Project.tlog/link.read.1.tlog
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/CreateOrders.obj
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/Login.obj
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/Manager.obj
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/Menu.obj
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/SLL.obj
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/Stats.obj
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/Table.obj
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/WaitStaff.obj
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/main.obj
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/vc140.idb
+#	modified:   CSCI 150 Project/CSCI 150 Project/Debug/vc140.pdb
+#	modified:   CSCI 150 Project/Debug/CSCI 150 Project.exe
+#	modified:   CSCI 150 Project/Debug/CSCI 150 Project.ilk
+#	modified:   CSCI 150 Project/Debug/CSCI 150 Project.pdb
+#	modified:   Project/Project.xcodeproj/project.xcworkspace/xcuserdata/Sanjay.xcuserdatad/UserInterfaceState.xcuserstate
+#	modified:   Project/Project.xcodeproj/xcuserdata/Sanjay.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+#	modified:   Project/Project/BillSplit.cpp
+#	modified:   Project/Project/BillSplit.hpp
+#	modified:   Project/Project/CreateOrders.cpp
+#	modified:   Project/Project/CreateOrders.hpp
+#	modified:   Project/Project/Login.cpp
+#	modified:   Project/Project/Manager.cpp
+#	modified:   Project/Project/Manager.hpp
+#	modified:   Project/Project/Menu.cpp
+#	new file:   Project/Project/Statistics.txt
+#	modified:   Project/Project/Stats.cpp
+#	modified:   Project/Project/Stats.hpp
+#	modified:   Project/Project/Table.cpp
+#	modified:   Project/Project/Table.hpp
+#	modified:   Project/Project/WaitStaff.cpp
+#	modified:   Project/Project/main.cpp
+#	modified:   README.md
+#
+

@@ -27,10 +27,10 @@ void splitBills(int tablenum)
     {
         if ((p->Customer[0][i]).size() >= 1)
         {
-            cout << i + 1 << " ";
+            cout << i + 1 << "   ";
         }
     }
-    cout << endl << "------------------" << endl;
+    cout << endl << "------------------" << endl << ">> ";
     cin.clear();
     cin >> input;
     while((input - '0') != 0)
@@ -42,7 +42,7 @@ void splitBills(int tablenum)
             {
                 cout << i+1 << "   ";
             }
-            cout << endl << "------------------" << endl;
+            cout << endl << "------------------" << endl << ">> ";
             cin >> input;
             continue;
         }
@@ -59,6 +59,9 @@ void splitBills(int tablenum)
             cin >> input;
         }
     }
+    
+    p->isAvailable = true;
+    
     if (inputvector.empty())
     {
         nosplitTotal(tablenum, 0);
@@ -147,7 +150,7 @@ void nosplitTotal(int tablenum, float fulltotal)
                 price = stream.str();
                 
                 outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
-                
+                updatefoodStats(q->Name, q->Item[foodnum - 1]);
                 total = total + q->Price[foodnum - 1];
                 continue;
             }
@@ -168,6 +171,7 @@ void nosplitTotal(int tablenum, float fulltotal)
                 price = stream.str();
                 
                 outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
+                updatefoodStats(q->Name, q->Item[foodnum - 1]);
                 total = total + q->Price[foodnum - 1];
                 continue;
             }
@@ -179,12 +183,16 @@ void nosplitTotal(int tablenum, float fulltotal)
         cout << outputvector.back() << endl;
         outputvector.pop_back();
     }
+    
+    updateTotal(total);
+    
     price  = "";
     stream.str("");
     stream << fixed << setprecision(2) << total;
     price = stream.str();
     
     cout << "\n" << "Total to be paid: " << price << endl;
+    cout << "-----------------------" << endl;
 }
 
 void splitTotal(int tablenum, vector<int> &inputvector)
@@ -266,6 +274,7 @@ void splitTotal(int tablenum, vector<int> &inputvector)
                 price = stream.str();
                 
                 outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
+                updatefoodStats(q->Name, q->Item[foodnum - 1]);
                 
                 total = total + q->Price[foodnum - 1];
                 fulltotal = fulltotal + q->Price[foodnum - 1];
@@ -287,6 +296,7 @@ void splitTotal(int tablenum, vector<int> &inputvector)
                 price = stream.str();
                 
                 outputvector.push_back((q->Item[foodnum - 1]) + customchoice + " - " + price);
+                updatefoodStats(q->Name, q->Item[foodnum - 1]);
                 
                 total = total + q->Price[foodnum - 1];
                 fulltotal = fulltotal + q->Price[foodnum - 1];
@@ -309,5 +319,115 @@ void splitTotal(int tablenum, vector<int> &inputvector)
     }
     
     nosplitTotal(tablenum, fulltotal);
+}
+
+void checkOrders()
+{
+    Table* p = head;
+    Menu* q;
+    string customchoice;
+    int fooditem = 0;
+    int foodtype, foodnum, foodcustom;
+    vector<string> outputvector;
+    vector<int>::const_iterator pointer;
+    
+    outputvector.clear();
+    system("CLS");
+    
+    while (p->next != NULL)
+    {
+        if (p->isAvailable == false)
+        {
+            cout << "---------------" << endl;
+            cout << "Table Number " << p->classTableNum << endl;
+            cout << "---------------" << endl;
+            
+            for (int i = 0; i < 4; i++)
+            {
+                if ((p->Customer[0][i]).empty())
+                {
+                    continue;
+                }
+				
+				pointer = p->Customer[0][i].begin();
+
+                while (pointer != p->Customer[0][i].end())
+                {   
+                    q = menuhead;
+                    customchoice = "";
+                    
+                    fooditem = *pointer;
+                    pointer++;
+                    
+                    foodcustom = fooditem % 10;
+                    fooditem = fooditem / 10;
+                    foodnum = fooditem % 10;
+                    fooditem = fooditem /10;
+                    foodtype = fooditem % 10;
+                    fooditem = fooditem / 10;
+                    
+                    if (fooditem == 1)
+                    {
+                        if (foodcustom == 1)
+                        {
+                            customchoice = " - Ketchup ";
+                        }
+                        if(foodcustom == 2)
+                        {
+                            customchoice = " - Mustard ";
+                        }
+                    }
+                    
+                    if (fooditem == 2)
+                    {
+                        if (foodcustom == 1)
+                        {
+                            customchoice = " - With Lemons";
+                        }
+                        if (foodcustom == 2)
+                        {
+                            customchoice = " - No Ice";
+                        }
+                    }
+                    
+                    if (fooditem == 1)
+                    {
+                        for(int j = 1; j < foodtype; j++)
+                        {
+                            q = q->next;
+                        }
+                        
+                        outputvector.push_back((q->Item[foodnum - 1]) + customchoice);
+                        continue;
+                    }
+                    if (fooditem == 2)
+                    {
+                        while ((q->foodtype) != 'd')
+                        {
+                            q = q->next;
+                        }
+                        for(int j = 1; j < foodtype; j++)
+                        {
+                            q = q->next;
+                        }
+                        
+                        outputvector.push_back((q->Item[foodnum - 1]) + customchoice);
+                        continue;
+                    }
+                    
+                }
+            }
+            while (!outputvector.empty())
+            {
+                cout << outputvector.back() << endl;
+                outputvector.pop_back();
+            }
+            
+            cout << "------------------------------" << endl << endl;
+        }
+        
+        p = p->next;
+        
+    }
 }
 

@@ -13,9 +13,9 @@
 #include "CreateOrders.hpp"
 #include "Menu.hpp"
 #include "SLL.hpp"
+#include "Stats.hpp"
 //#include "Table.hpp"
 #include <iostream>
-#include <windows.h>
 #include <vector>
 #include <cctype>
 #include <iomanip>
@@ -26,4 +26,5 @@ using namespace std;
 void splitBills(int tablenum);
 void nosplitTotal(int tablenumber, float fulltotal);
 void splitTotal(int tablenum, vector<int> &inputvector);
+void checkOrders();
 #endif /* BillSplit_hpp */
