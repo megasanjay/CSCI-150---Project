@@ -106,7 +106,7 @@ void Orders()
         
         while (input != 0)
         {
-            ///Select Customer
+            //*****Select Customer
             if (a == 'c')
             {
                 cout << "Please input customer number: " << endl << ">> ";
@@ -118,8 +118,7 @@ void Orders()
                     continue;
                 }
             }
-            ///Select food or drink
-            //--------------------------PrintMenu();
+            //*****Select food or drink
             system("CLS");
             cout << "Press 1 for Food, 2 for Drinks" << endl << ">> ";
             cin.clear();
